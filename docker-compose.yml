@@ -1,0 +1,68 @@
+version: '3.6'
+services:
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    environment:
+      - "discovery.type=single-node"
+    volumes:
+      - es-volume:/usr/share/elasticsearch/data
+
+  api:
+    build: ./api
+    depends_on:
+      - elasticsearch
+    environment:
+      ELASTIC_URL: 'http://elasticsearch:9200'
+      ELASTIC_INDEX: 'users'
+      ELASTIC_DEBUG: 'false'
+
+  auth:
+    image: quay.io/keycloak/keycloak:12.0.2
+    ports:
+      - "8090:8080"
+    environment:
+      KEYCLOAK_USER: 'admin'
+      KEYCLOAK_PASSWORD: 'admin'
+      KEYCLOAK_IMPORT: '/tmp/keycloak-realm-api.json'
+    volumes:
+      - ./auth/keycloak-realm-api.json:/tmp/keycloak-realm-api.json
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - api
+      - auth
+    environment:
+      KONG_DATABASE: 'off'
+      KONG_ADMIN_LISTEN: '0.0.0.0:8001, 0.0.0.0:8444 ssl'
+      KONG_PROXY_ACCESS_LOG: '/dev/stdout'
+      KONG_ADMIN_ACCESS_LOG: '/dev/stdout'
+      KONG_PROXY_ERROR_LOG: '/dev/stderr'
+      KONG_ADMIN_ERROR_LOG: '/dev/stderr'
+      KONG_DECLARATIVE_CONFIG: '/usr/local/kong/declarative/kong.yml'
+      KONG_PLUGINS: 'bundled,oidc'
+    volumes:
+      - ./gateway/kong.yml:/usr/local/kong/declarative/kong.yml
+
+  doc:
+    image: swaggerapi/swagger-ui:v3.40.0
+    ports:
+      - "80:8080"
+    networks:
+      - doc
+    environment:
+      SWAGGER_JSON: /spec/swagger.json
+    volumes:
+      - ./doc/swagger.json:/spec/swagger.json
+
+volumes:
+  es-volume: { }
+
+networks:
+  default:
+    external:
+      name: textsearch
+  doc:
+    name: doc-network
