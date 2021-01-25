@@ -1,0 +1,68 @@
+_format_version: "2.1"
+services:
+  - host: api
+    name: api
+    port: 8080
+    protocol: http
+    routes:
+    - name: search
+      methods: ["GET", "OPTIONS"]
+      paths:
+      - "/search/v1"
+  - host: host.docker.internal
+    name: auth
+    port: 8090
+    protocol: http
+    path: "/auth/realms/gateway/protocol/openid-connect/token"
+    routes:
+      - name: token
+        methods: ["POST"]
+        paths:
+          - "/auth"
+plugins:
+  - name: rate-limiting
+    config:
+      second: 100
+      policy: local
+      limit_by: ip
+  - name: proxy-cache
+    route: search
+    config:
+      cache_ttl: 5
+      strategy: memory
+  - name: oidc
+    service: api
+    route: search
+    config:
+      client_id: api
+      client_secret: 1677c713-9509-45c5-8dcd-f466e842a9fa
+      realm: gateway
+      bearer_only: 'yes'
+      introspection_endpoint: http://host.docker.internal:8090/auth/realms/gateway/protocol/openid-connect/token/introspect
+      discovery: http://host.docker.internal:8090/auth/realms/gateway/.well-known/openid-configuration
+  - name: cors
+    service: api
+    route: search
+    config:
+      origins:
+        - '*'
+      methods:
+        - GET
+      headers:
+        - Accept
+        - Accept-Version
+        - Content-Type
+        - Content-Length
+        - Content-MD5
+        - Authorization
+  - name: request-transformer
+    service: auth
+    route: token
+    config:
+      add:
+        headers:
+          - Content-Type:application/x-www-form-urlencoded
+        body:
+          - grant_type:password
+          - client_id:api
+          - client_secret:1677c713-9509-45c5-8dcd-f466e842a9fa
