@@ -1,0 +1,44 @@
+{
+  "realm": "gateway",
+  "enabled": true,
+  "users": [
+    {
+      "username": "api@gmail.com.br",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "api"
+        }
+      ],
+      "realmRoles": [
+        "users-search",
+        "users"
+      ]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "users-search",
+        "description": "Users search API"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "api",
+      "enabled": true,
+      "authorizationServicesEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "1677c713-9509-45c5-8dcd-f466e842a9fa",
+      "redirectUris": [
+        "*"
+      ],
+      "webOrigins": [
+        "*"
+      ]
+    }
+  ]
+}
