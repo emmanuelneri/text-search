@@ -4,3 +4,5 @@
 /.idea/
 /relevance-importer/.idea/
 /user-importer/.idea/
+
+.*DS_Store
