@@ -1,0 +1,130 @@
+{
+  "_scroll_id": "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFkJySEhCMnR5U1ZpQS16STBpRmFHMXcAAAAAAAAAIhY5QW81aWx1clE4dWxnMzlFZDI2NEln",
+  "took": 4,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 10000,
+      "relation": "gte"
+    },
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "gjQ_-XYBmcXbRmaN0Pl4",
+        "_score": 1.0,
+        "_source": {
+          "ID": "36e9f58f-c4e0-4c41-84a4-81ac5e608553",
+          "Name": "Tamiris Kesheh",
+          "Username": "tamiris.kesheh"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "gzQ_-XYBmcXbRmaN0Pl4",
+        "_score": 1.0,
+        "_source": {
+          "ID": "e6da5140-fae5-435e-868d-9c4e4e7a465e",
+          "Name": "Elizabeth Casali",
+          "Username": "elizabethcasali"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "hDQ_-XYBmcXbRmaN0Pl4",
+        "_score": 1.0,
+        "_source": {
+          "ID": "1daac1c8-6393-4649-a115-31bf7c4b8e9d",
+          "Name": "Eberson Belmiro Raimundo",
+          "Username": "ebersonbelmiroraimundo"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "hTQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "9ec3783c-80ac-4a0c-8226-c5b15f4490d3",
+          "Name": "Dieison Sikvs",
+          "Username": "dieisonsikvs"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "hjQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "fd383b52-8e01-4b1b-88cd-c534db56152a",
+          "Name": "Manuela Agnoletto Cortepace",
+          "Username": "manuela.agnoletto.cortepace"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "hzQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "87edc52d-6243-463a-a47f-0d998d0970f2",
+          "Name": "Lys Dall",
+          "Username": "lys.dall"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "iDQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "66e00f3a-56fd-40d1-9805-04a3239b803c",
+          "Name": "mariana Mattos",
+          "Username": "mariana.mattos"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "iTQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "dc917876-fc07-4479-9849-875b42c70fd3",
+          "Name": "James Baby Bioto",
+          "Username": "james.baby.bioto"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "ijQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "c3745bd2-cd97-413d-b01a-a7a6d47f896e",
+          "Name": "Deysiane Barbato",
+          "Username": "deysiane.barbato"
+        }
+      },
+      {
+        "_index": "index",
+        "_type": "_doc",
+        "_id": "izQ_-XYBmcXbRmaN0Pl5",
+        "_score": 1.0,
+        "_source": {
+          "ID": "697e6415-dbb5-4e46-ac9d-a3d381d04de6",
+          "Name": "juh Deo",
+          "Username": "juh.deo"
+        }
+      }
+    ]
+  }
+}

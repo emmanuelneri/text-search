@@ -1,0 +1,17 @@
+{
+  "query": {
+    "function_score": {
+      "query": {
+        "match_all": {}
+      },
+      "boost": "5",
+      "functions": [
+        {
+          "field_value_factor": {
+            "field": "relevance"
+          }
+        }
+      ]
+    }
+  }
+}
